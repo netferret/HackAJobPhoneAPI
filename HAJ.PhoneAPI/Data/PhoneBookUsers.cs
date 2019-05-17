@@ -2,7 +2,6 @@
 {
     public class PhoneBookUsers
     {
-        // Install Git
         // Create Primary Key then Add Migrations
     }
 }
