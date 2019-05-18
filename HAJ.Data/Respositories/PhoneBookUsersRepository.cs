@@ -16,28 +16,34 @@ namespace HAJ.PhoneAPI.Domain
             _context = context;
         }
 
-
-
-        public bool CreateUser(PhoneBookUser user)
+        public PhoneBookUser CreateUser(PhoneBookUser user)
         {
             var result = _context.Add(user);
             _context.SaveChangesAsync();
 
             if (result != null)
             {
+                return user;
+            }
+
+            return null;
+        }
+
+
+        public bool DeleteUser(int id)
+        {
+            var phoneBookUser = _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault();
+
+            if (phoneBookUser != null)
+            {
+                _context.Remove(phoneBookUser);
+                _context.SaveChangesAsync();
                 return true;
             }
 
             return false;
         }
 
-
-        public bool DeleteUser(int id) => _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault() != null;
-
-        public bool DeleteUser(PhoneBookUser user)
-        {
-            throw new NotImplementedException();
-        }
 
         public PhoneBookUser ReadUser(int id) => _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault();
 

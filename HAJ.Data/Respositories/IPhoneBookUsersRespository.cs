@@ -2,7 +2,7 @@
 {
     public interface IPhoneBookUsersRespository
     {
-        bool CreateUser(PhoneBookUser user);
+        PhoneBookUser CreateUser(PhoneBookUser user);
 
         PhoneBookUser ReadUser(int id);
 

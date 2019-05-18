@@ -46,9 +46,9 @@ namespace HAJ.PhoneAPI.Controllers
         public IActionResult Create([FromBody]PhoneBookUser newPhoneBookUser)
         {
             var result = _phoneBookUsersRespository.CreateUser(newPhoneBookUser);
-            if (result)
+            if (result != null)
             {
-                return Ok("User was created successfully.");
+                return Ok(result);
             }
 
             return BadRequest("User was not created.");
@@ -74,11 +74,11 @@ namespace HAJ.PhoneAPI.Controllers
         //}
 
         //DELETE api/values/5
-        [HttpDelete("Delete/{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
         {
             var result = _phoneBookUsersRespository.DeleteUser(id);
-            if (result != null)
+            if (result)
             {
                 return Ok($"Deleted User {id} Successfully");
             }
