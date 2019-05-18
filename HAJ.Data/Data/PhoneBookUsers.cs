@@ -1,4 +1,4 @@
-﻿namespace HAJ.PhoneAPI.Data
+﻿namespace HAJ.PhoneAPI.Domain
 {
     public class PhoneBookUsers
     {

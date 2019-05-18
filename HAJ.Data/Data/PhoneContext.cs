@@ -8,10 +8,7 @@ namespace HAJ.PhoneAPI.Data
 {
     public class PhoneContext : DbContext
     {
-        public PhoneContext(DbContextOptions<PhoneContext> options)
-           : base(options)
+        public PhoneContext(DbContextOptions<PhoneContext> options) : base(options)
         { }
-
-        public DbSet<PhoneBookUsers> PhoneBookUsers { get; set; }
     }
 }
