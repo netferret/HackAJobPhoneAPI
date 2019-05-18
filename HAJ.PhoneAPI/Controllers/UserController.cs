@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HAJ.PhoneAPI.Entities;
 using HAJ.PhoneAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HAJ.PhoneAPI.Controllers
-{   
+{
+    // Authorisation must be done using the 'Authorization' header and then 'Bearer TOKEN'
+
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
