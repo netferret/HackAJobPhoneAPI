@@ -2,12 +2,12 @@
 {
     public interface IPhoneBookUsersRespository
     {
-        void CreateUser(PhoneBookUser user);
+        bool CreateUser(PhoneBookUser user);
 
-        void ReadUser(int id);
+        PhoneBookUser ReadUser(int id);
 
-        void UpdateUser(PhoneBookUser user);
+        bool UpdateUser(PhoneBookUser user, int uid);
 
-        void DeleteUser(PhoneBookUser user);
+        bool DeleteUser(int id);
     }
 }
