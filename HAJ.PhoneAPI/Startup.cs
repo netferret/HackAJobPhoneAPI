@@ -1,4 +1,4 @@
-﻿using HAJ.PhoneAPI.Data;
+﻿using HAJ.PhoneAPI.Domain.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

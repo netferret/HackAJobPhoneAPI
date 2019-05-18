@@ -13,15 +13,13 @@ namespace HAJ.PhoneAPI.Domain.Migrations
                    Id = table.Column<int>(nullable: false),
                    FirstName = table.Column<string>(maxLength: 32, nullable: true),
                    Surname = table.Column<string>(maxLength: 32, nullable: true),
-                   NameNumber = table.Column<string>(maxLength: 32, nullable: true),
+                   Number = table.Column<string>(maxLength: 32, nullable: true),
                    Street = table.Column<string>(maxLength: 32, nullable: true),
                    Postcode = table.Column<string>(maxLength: 32, nullable: true),
-                   Username = table.Column<string>(maxLength: 32, nullable: true),
-                   Password = table.Column<string>(maxLength: 32, nullable: true),
                },
                constraints: table =>
                {
-                   table.PrimaryKey("PK_Candidate", x => x.Id);
+                   table.PrimaryKey("PK_PhoneUser", x => x.Id);
                });
         }
 
