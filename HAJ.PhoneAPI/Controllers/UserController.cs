@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HAJ.PhoneAPI.Domain;
 using HAJ.PhoneAPI.Entities;
 using HAJ.PhoneAPI.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -18,10 +19,12 @@ namespace HAJ.PhoneAPI.Controllers
     {
 
         private IUserService _userService;
+        private IPhoneBookUsersRespository _phoneBookUsersRespository;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IPhoneBookUsersRespository phoneBookUsersRespository)
         {
             _userService = userService;
+            _phoneBookUsersRespository = phoneBookUsersRespository;
         }
 
 
@@ -38,36 +41,49 @@ namespace HAJ.PhoneAPI.Controllers
         }
 
         // GET api/values
-        [HttpGet]
-        [Route("Create")]
-        public ActionResult<IEnumerable<string>> Create()
+        [HttpPost]
+        [Route("create")]
+        public IActionResult Create([FromBody]PhoneBookUser newPhoneBookUser)
         {
-            return new string[] { "value1", "value2" };
+            var result = _phoneBookUsersRespository.CreateUser(newPhoneBookUser);
+            if (result)
+            {
+                return Ok("User was created successfully.");
+            }
+
+            return BadRequest("User was not created.");
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            var result = _phoneBookUsersRespository.ReadUser(id);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest("User was not found or an error occurred.");
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// PUT api/values/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //DELETE api/values/5
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-        }
+            var result = _phoneBookUsersRespository.DeleteUser(id);
+            if (result != null)
+            {
+                return Ok($"Deleted User {id} Successfully");
+            }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return BadRequest("User was not found or an error occurred.");
         }
     }
 }

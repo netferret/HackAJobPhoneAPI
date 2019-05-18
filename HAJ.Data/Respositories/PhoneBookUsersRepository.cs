@@ -3,20 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAJ.PhoneAPI.Domain
 {
     public class PhoneBookUsersRepository : IPhoneBookUsersRespository
     {
-
         private readonly PhoneContext _context;
+
+        public PhoneBookUsersRepository(PhoneContext context)
+        {
+            _context = context;
+        }
+
+
 
         public bool CreateUser(PhoneBookUser user)
         {
             var result = _context.Add(user);
             _context.SaveChangesAsync();
 
-            if (result != null) {
+            if (result != null)
+            {
                 return true;
             }
 

@@ -1,4 +1,5 @@
-﻿using HAJ.PhoneAPI.Domain.Data;
+﻿using HAJ.PhoneAPI.Domain;
+using HAJ.PhoneAPI.Domain.Data;
 using HAJ.PhoneAPI.Helpers;
 using HAJ.PhoneAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +54,7 @@ namespace HAJ.PhoneAPI
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPhoneBookUsersRespository, PhoneBookUsersRepository>();
 
             var connection = @"Server=(localdb)\mssqllocaldb;Database=PhoneAPI;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<PhoneContext>
