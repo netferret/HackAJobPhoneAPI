@@ -67,11 +67,18 @@ namespace HAJ.PhoneAPI.Controllers
             return BadRequest("User was not found or an error occurred.");
         }
 
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody]PhoneBookUser newPhoneBookUser)
+        {
+            var result = _phoneBookUsersRespository.UpdateUser(id, newPhoneBookUser);
+            if (result)
+            {
+                return Ok(@"User {id} was updated successfully");
+            }
+
+            return BadRequest("User was not created.");
+        }
 
         //DELETE api/values/5
         [HttpDelete("{id}")]

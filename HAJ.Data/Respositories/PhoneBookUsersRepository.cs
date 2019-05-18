@@ -47,7 +47,7 @@ namespace HAJ.PhoneAPI.Domain
 
         public PhoneBookUser ReadUser(int id) => _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault();
 
-        public bool UpdateUser(PhoneBookUser user, int id)
+        public bool UpdateUser(int id, PhoneBookUser user)
         {
             var existingPhoneBookUser = _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault();
 

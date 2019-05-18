@@ -6,7 +6,7 @@
 
         PhoneBookUser ReadUser(int id);
 
-        bool UpdateUser(PhoneBookUser user, int uid);
+        bool UpdateUser(int uid, PhoneBookUser user);
 
         bool DeleteUser(int id);
     }
