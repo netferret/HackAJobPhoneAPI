@@ -20,7 +20,6 @@ namespace HAJ.PhoneAPI.Tests
 
         public RepositoryTests()
         {
-
             var optionsBuilder = new DbContextOptionsBuilder<PhoneContext>();
             optionsBuilder.UseSqlServer
               (@"Server=(localdb)\mssqllocaldb;Database=PhoneAPI;Trusted_Connection=True;ConnectRetryCount=0");
@@ -61,7 +60,12 @@ namespace HAJ.PhoneAPI.Tests
             Assert.True(createResult.StatusCode == 200);
             Assert.NotNull(createResult.Value.Id);
 
-            var id = createResult.Value.Id;
+
+            dynamic getUserResult = _userController.Get(createResult.Value.Id);
+            Assert.True(getUserResult.Result.StatusCode == 200);
+            Assert.NotNull(getUserResult.Result.Value.Id);
+
+            var id = getUserResult.Result.Value.Id;
             dynamic deleteResult = _userController.Delete(((int)id));
             Assert.True(deleteResult.Result.StatusCode == 200);
         }

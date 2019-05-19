@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HAJ.PhoneAPI.Domain;
+﻿using HAJ.PhoneAPI.Domain;
 using HAJ.PhoneAPI.Entities;
 using HAJ.PhoneAPI.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +35,6 @@ namespace HAJ.PhoneAPI.Controllers
             return Ok(user);
         }
 
-        // GET api/values
         [HttpPost]
         [Route("create")]
         public IActionResult Create([FromBody]PhoneBookUser newPhoneBookUser)
@@ -53,7 +48,6 @@ namespace HAJ.PhoneAPI.Controllers
             return BadRequest("User was not created.");
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
@@ -66,7 +60,6 @@ namespace HAJ.PhoneAPI.Controllers
             return BadRequest("User was not found or an error occurred.");
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]PhoneBookUser newPhoneBookUser)
         {
@@ -79,7 +72,6 @@ namespace HAJ.PhoneAPI.Controllers
             return BadRequest("User was not created.");
         }
 
-        //DELETE api/values/5
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
         {
