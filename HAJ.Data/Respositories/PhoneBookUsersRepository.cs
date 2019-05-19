@@ -19,8 +19,8 @@ namespace HAJ.PhoneAPI.Domain
         public PhoneBookUser CreateUser(PhoneBookUser user)
         {
             var result = _context.Add(user);
-            _context.SaveChangesAsync();
-
+            _context.SaveChanges();
+            
             if (result != null)
             {
                 return user;
@@ -29,7 +29,6 @@ namespace HAJ.PhoneAPI.Domain
             return null;
         }
 
-
         public bool DeleteUser(int id)
         {
             var phoneBookUser = _context.PhoneBookUsers.Where(x => x.Id == id).FirstOrDefault();
@@ -37,7 +36,7 @@ namespace HAJ.PhoneAPI.Domain
             if (phoneBookUser != null)
             {
                 _context.Remove(phoneBookUser);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return true;
             }
 
@@ -56,7 +55,7 @@ namespace HAJ.PhoneAPI.Domain
                 existingPhoneBookUser = user;
 
                 _context.PhoneBookUsers.Update(existingPhoneBookUser);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
 
                 return true;
             }
