@@ -5,11 +5,8 @@ using Xunit;
 using HAJ.PhoneAPI.Domain.Data;
 using HAJ.PhoneAPI.Helpers;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
+using System;
 
 namespace HAJ.PhoneAPI.Tests
 {
@@ -18,6 +15,8 @@ namespace HAJ.PhoneAPI.Tests
 
         private IUserService _userService;
         private IPhoneBookUsersRespository _phoneBookUsersRespository;
+        private UserController _userController;
+        private PhoneBookUser _phoneBookUser;
 
         public RepositoryTests()
         {
@@ -33,12 +32,10 @@ namespace HAJ.PhoneAPI.Tests
 
             _userService = new UserService(options);
             _phoneBookUsersRespository = new PhoneBookUsersRepository(new PhoneContext(optionsBuilder.Options));
-        }
 
-        [Fact]
-        public void CreateUser()
-        {
-            var newUser = new PhoneBookUser
+            _userController = new UserController(_userService, _phoneBookUsersRespository);
+
+            _phoneBookUser = new PhoneBookUser
             {
                 FirstName = "Joe",
                 Surname = "Bloggs",
@@ -47,12 +44,26 @@ namespace HAJ.PhoneAPI.Tests
                 Street = "Test Street",
                 Postcode = "L12 1234"
             };
+        }
 
-            var controller = new UserController(_userService, _phoneBookUsersRespository);
+        [Fact]
+        public void CreateUser()
+        {
+            dynamic test = _userController.Create(_phoneBookUser);
 
-            dynamic test = controller.Create(newUser);
+            Assert.True(test.StatusCode == 200);
+        }
 
-            Assert.NotNull(test.StatusCode == 200);
+        [Fact]
+        public void DeleteUserScenario()
+        {
+            dynamic createResult = _userController.Create(_phoneBookUser);
+            Assert.True(createResult.StatusCode == 200);
+            Assert.NotNull(createResult.Value.Id);
+
+            var id = createResult.Value.Id;
+            dynamic deleteResult = _userController.Delete(((int)id));
+            Assert.True(deleteResult.Result.StatusCode == 200);
         }
     }
 }
