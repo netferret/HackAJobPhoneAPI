@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "04fd4748-859f-4e9f-a722-0b38c6ba394b",
+		"name": "PhoneAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"Administrator\",\"password\":\"Password\"}"
+        },
+				"url": {
+					"raw": "http://localhost:5000/user/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJuYmYiOjE1NTgxOTk1MjQsImV4cCI6MTU1ODgwNDMyNCwiaWF0IjoxNTU4MTk5NTI0fQ.KpqIeZpCdcSI321PJ0WPevhYdBT8KljdLpH56tc-zIs",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstname\": \"Joe\", \n\"surname\": \"Joe\", \n\"username\":\"jbloggs\",\n\"password\":\"password\",\n\"number\":\"07812232342\",\n\"housenamenumber\":\"123\",\n\"street\":\"test drive\",\n\"postcode\":\"L12 1234\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJuYmYiOjE1NTgxOTk1MjQsImV4cCI6MTU1ODgwNDMyNCwiaWF0IjoxNTU4MTk5NTI0fQ.KpqIeZpCdcSI321PJ0WPevhYdBT8KljdLpH56tc-zIs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/user/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

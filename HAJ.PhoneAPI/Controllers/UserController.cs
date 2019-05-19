@@ -11,13 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace HAJ.PhoneAPI.Controllers
 {
     // Authorisation must be done using the 'Authorization' header and then 'Bearer TOKEN'
+    // Security could be improved with DTO Entities, but authorisation is required to access these methods anyway
 
     [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-
         private IUserService _userService;
         private IPhoneBookUsersRespository _phoneBookUsersRespository;
 
@@ -26,7 +26,6 @@ namespace HAJ.PhoneAPI.Controllers
             _userService = userService;
             _phoneBookUsersRespository = phoneBookUsersRespository;
         }
-
 
         [AllowAnonymous]
         [HttpPost("authenticate")]

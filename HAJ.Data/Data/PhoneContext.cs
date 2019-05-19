@@ -10,7 +10,12 @@ namespace HAJ.PhoneAPI.Domain.Data
     {
         public PhoneContext(DbContextOptions<PhoneContext> options) : base(options)
         {
-            Database.Migrate();
+
+        }
+
+        public PhoneContext()
+        {
+
         }
 
         public DbSet<PhoneBookUser> PhoneBookUsers { get; set; }

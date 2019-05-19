@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAJ.PhoneAPI", "HAJ.PhoneAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAJ.PhoneAPI.Domain", "HAJ.Data\HAJ.PhoneAPI.Domain.csproj", "{A6269719-116B-4BA7-B08D-3BCA147FF2F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAJ.PhoneAPI.Tests", "HAJ.PhoneAPI.Tests\HAJ.PhoneAPI.Tests.csproj", "{342D4022-AF4C-4DAE-9691-E3909B802C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A6269719-116B-4BA7-B08D-3BCA147FF2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6269719-116B-4BA7-B08D-3BCA147FF2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6269719-116B-4BA7-B08D-3BCA147FF2F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342D4022-AF4C-4DAE-9691-E3909B802C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342D4022-AF4C-4DAE-9691-E3909B802C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342D4022-AF4C-4DAE-9691-E3909B802C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342D4022-AF4C-4DAE-9691-E3909B802C6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
